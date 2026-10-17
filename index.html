@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home | Climate Change IT</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@200;300;400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <!-- AOS ანიმაციების ბიბლიოთეკა (CSS) -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ================= HEADER ================= -->
+  <header class="header">
+    <a class="logo" href="index.html">
+      <img src="imgs/logo.png" alt="Climate Change IT">
+    </a>
+
+    <!-- ბურგერ მენიუ JS-ის გარეშე: checkbox + label (მუშაობს მხოლოდ მობილურზე) -->
+    <input type="checkbox" id="menu-toggle" class="menu-toggle">
+    <label for="menu-toggle" class="burger" aria-label="Open menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
+
+    <nav class="nav">
+      <ul class="nav__list">
+        <li><a class="active" href="index.html">Home</a></li>
+        <li><a href="pages/about.html">About</a></li>
+        <li><a href="pages/blog.html">Blog</a></li>
+        <li><a href="pages/get-involved.html">Get Involved</a></li>
+      </ul>
+    </nav>
+
+    <div class="socials">
+      <a href="https://www.facebook.com/wix" target="_blank" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.356c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 22.954 24 17.99 24 12c0-6.627-5.373-12-12-12z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/wix" target="_blank" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+      </a>
+      <a href="https://www.linkedin.com/company/wix-com" target="_blank" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm-3.12 17.203H6.28V9.672h2.6V17.203zM7.58 8.527c-.832 0-1.508-.676-1.508-1.508 0-.832.676-1.508 1.508-1.508.832 0 1.508.676 1.508 1.508 0 .832-.676 1.508-1.508 1.508zm10.14 8.676h-2.6v-3.79c0-.904-.017-2.067-1.26-2.067-1.26 0-1.453.984-1.453 2.002v3.855h-2.6V9.672h2.496v1.028h.035c.348-.658 1.196-1.352 2.464-1.352 2.636 0 3.118 1.735 3.118 3.992v3.863z"/></svg>
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <!-- ================= HERO ================= -->
+    <section class="hero">
+      <div class="hero__box">
+        <p>Join us in the fight against<br>climate change!</p>
+        <a class="btn btn--black-dot" href="pages/get-involved.html">Get Involved <span class="btn__dot"></span></a>
+      </div>
+
+      <h1 class="hero__title title-xl" data-aos="zoom-out">Empowering change<br>through technology</h1>
+
+      <div class="hero__texts">
+        <p data-aos="fade-right">At Climate Change IT, we leverage innovative technology solutions to combat climate change and promote sustainability.</p>
+        <p data-aos="fade-right" data-aos-delay="200">Our mission is to educate and inspire action within communities while advocating for our planet. Together, we can create a sustainable future for generations to come.</p>
+      </div>
+    </section>
+
+    <!-- ================= OUR MISSION ================= -->
+    <section class="mission">
+      <div class="mission__img" data-aos="fade-right">
+        <img src="imgs/22.avif" alt="Wind turbines in a green field">
+      </div>
+      <div class="mission__content">
+        <h2 class="title-xl" data-aos="fade-up">Our<br>mission</h2>
+        <p>Our mission is to empower individuals and communities to address climate change through education, technology, and advocacy. We believe in using innovation and collaboration to drive impactful change and support efforts for a healthier planet.</p>
+        <a class="btn" href="pages/about.html">Learn More <span class="btn__dot"></span></a>
+      </div>
+    </section>
+
+    <!-- ================= SERVICES ================= -->
+    <section class="services">
+      <h2 class="services__title title-l" data-aos="zoom-out">Innovative solutions we offer</h2>
+
+      <article class="service" data-aos="fade-up">
+        <p class="service__num">01</p>
+        <div class="service__info">
+          <h3>Climate Data Analysis</h3>
+          <p>Utilizing advanced analytics to provide actionable insights on climate patterns and effects</p>
+        </div>
+        <img class="service__img" src="imgs/23.avif" alt="Climate Data Analysis">
+        <p class="service__price">$350</p>
+      </article>
+
+      <article class="service" data-aos="fade-up">
+        <p class="service__num">02</p>
+        <div class="service__info">
+          <h3>Renewable Energy Solutions</h3>
+          <p>Consulting services focused on sustainable energy systems like solar and wind</p>
+        </div>
+        <img class="service__img" src="imgs/24.avif" alt="Renewable Energy Solutions">
+        <p class="service__price">$200<br>per hour</p>
+      </article>
+
+      <article class="service" data-aos="fade-up">
+        <p class="service__num">03</p>
+        <div class="service__info">
+          <h3>Digital Advocacy Campaigns</h3>
+          <p>Complete strategies for online engagement and mobilization on climate issues</p>
+        </div>
+        <img class="service__img" src="imgs/25.avif" alt="Digital Advocacy Campaigns">
+        <p class="service__price">$500</p>
+      </article>
+
+      <article class="service" data-aos="fade-up">
+        <p class="service__num">04</p>
+        <div class="service__info">
+          <h3>Community Workshops and Training</h3>
+          <p>Interactive sessions to educate and train communities on sustainability practices</p>
+        </div>
+        <img class="service__img" src="imgs/26.avif" alt="Community Workshops and Training">
+        <p class="service__price">$150<br>per session</p>
+      </article>
+
+      <article class="service" data-aos="fade-up">
+        <p class="service__num">05</p>
+        <div class="service__info">
+          <h3>Custom Software Development for NGO</h3>
+          <p>Tailored applications to enhance efficiency in environmental initiatives</p>
+        </div>
+        <img class="service__img" src="imgs/27.avif" alt="Custom Software Development for NGO">
+        <p class="service__price">from<br>$5000</p>
+      </article>
+    </section>
+
+    <!-- ================= COMMUNITY ================= -->
+    <section class="community">
+      <h2 class="community__title title-s" data-aos="fade-right">Community<br>engagement</h2>
+
+      <div class="gallery" data-aos="fade-up">
+      <img class="wide" src="imgs/imgForSmthLikeGal1.avif" alt="Community photo 1">
+      <img class="tall" src="imgs/imgForSmthLikeGal2.avif" alt="Community photo 2">
+      <img class="wide" src="imgs/imgForSmthLikeGal3.avif" alt="Community photo 3">
+      <img class="tall" src="imgs/imgForSmthLikeGal4.avif" alt="Community photo 4">
+      <img class="wide" src="imgs/imgForSmthLikeGal5.avif" alt="Community photo 5">
+      <img class="tall" src="imgs/imgForSmthLikeGal6.avif" alt="Community photo 6">
+      </div>
+
+      <p class="community__text" data-aos="fade-right">We believe change starts within our communities. Our engagement initiatives connect technology and grassroots movements, fostering collaboration and awareness. Join us for workshops, webinars, and outreach programs designed to uplift and educate.</p>
+    </section>
+
+    <!-- ================= LATEST INSIGHTS ================= -->
+    <section class="insights">
+      <h2 class="insights__title title-s">Latest insights<br>from our blog</h2>
+
+      <div class="cards">
+      <a class="card" href="pages/post.html" data-aos="fade-up" data-aos-delay="0">
+        <img src="imgs/cards1.avif" alt="Technology's Role in Mitigation">
+        <p class="card__title">Technology's Role in Mitigation</p>
+      </a>
+      <a class="card" href="pages/post.html" data-aos="fade-up" data-aos-delay="100">
+        <img src="imgs/cards2.avif" alt="Community Resilience through Collaboration">
+        <p class="card__title">Community Resilience through Collaboration</p>
+      </a>
+      <a class="card" href="pages/post.html" data-aos="fade-up" data-aos-delay="200">
+        <img src="imgs/cards3.avif" alt="Green Tech Innovation">
+        <p class="card__title">Green Tech Innovation</p>
+      </a>
+      </div>
+
+      <div class="insights__more">
+        <a class="btn" href="pages/blog.html">Read More <span class="btn__dot"></span></a>
+      </div>
+    </section>
+
+    <!-- ================= GET INVOLVED TODAY ================= -->
+    <section class="join">
+      <img class="join__img" src="imgs/get-involved-img.avif" alt="Polar bear on the ice" data-aos="fade-right">
+      <div class="join__content">
+        <h2 class="title-l">Get involved today!</h2>
+        <p data-aos="fade-up">Join our community of passionate advocates and contribute to the fight against climate change. Whether you want to volunteer, donate, or simply learn more, there's a place for you here!</p>
+        <a class="btn" href="pages/get-involved.html">Sign Up Now <span class="btn__dot"></span></a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <div class="footer__col">
+      <a class="footer__logo" href="index.html">
+        <img src="imgs/logo.png" alt="Climate Change IT">
+      </a>
+      <div class="footer__links">
+        <a href="pages/terms.html">Terms &amp; Conditions</a>
+        <a href="pages/privacy.html">Privacy Policy</a>
+        <a href="pages/refund.html">Refund Policy</a>
+        <a href="pages/accessibility.html">Accessibility Statement</a>
+      </div>
+    </div>
+
+    <img class="footer__img" src="imgs/img-footer.avif" alt="Green forest" data-aos="fade-up">
+
+    <div class="footer__col">
+      <div class="footer__nav">
+        <a href="index.html">Home</a>
+        <a href="pages/about.html">About</a>
+        <a href="pages/blog.html">Blog</a>
+        <a href="pages/get-involved.html">Get Involved</a>
+      </div>
+      <address class="footer__contact">
+        <p>500 Terry Francine Street<br>San Francisco, CA 94158</p>
+        <p><a href="tel:1234567890">123-456-7890</a></p>
+        <p><a href="mailto:info@mysite.com">info@mysite.com</a></p>
+      </address>
+    </div>
+
+    <div class="footer__col">
+      <div class="socials">
+        <a href="https://www.facebook.com/wix" target="_blank" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.356c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 22.954 24 17.99 24 12c0-6.627-5.373-12-12-12z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/wix" target="_blank" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+        </a>
+        <a href="https://www.linkedin.com/company/wix-com" target="_blank" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm-3.12 17.203H6.28V9.672h2.6V17.203zM7.58 8.527c-.832 0-1.508-.676-1.508-1.508 0-.832.676-1.508 1.508-1.508.832 0 1.508.676 1.508 1.508 0 .832-.676 1.508-1.508 1.508zm10.14 8.676h-2.6v-3.79c0-.904-.017-2.067-1.26-2.067-1.26 0-1.453.984-1.453 2.002v3.855h-2.6V9.672h2.496v1.028h.035c.348-.658 1.196-1.352 2.464-1.352 2.636 0 3.118 1.735 3.118 3.992v3.863z"/></svg>
+        </a>
+      </div>
+      <p class="copyright">© 2035 by Climate Change IT. Powered and secured by <a href="https://www.wix.com" target="_blank">Wix</a></p>
+    </div>
+  </footer>
+
+  <!-- AOS ბიბლიოთეკა — ეს ერთადერთი სკრიპტია, მხოლოდ ანიმაციების ჩასართავად -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>AOS.init({ once: true, duration: 800 });</script>
+</body>
+</html>

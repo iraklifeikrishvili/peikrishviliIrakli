@@ -1,0 +1,1143 @@
+/* =========================================================
+   Climate Change IT — HTML/CSS პროექტი
+   ---------------------------------------------------------
+   სარჩევი:
+   1. ცვლადები და ზოგადი სტილები
+   2. სათაურები და ღილაკები
+   3. Header (ბურგერ მენიუ JS-ის გარეშე)
+   4. მთავარი გვერდი (index)
+   5. About გვერდი
+   6. Blog გვერდი
+   7. ფორმა (Subscribe) — ვალიდაცია CSS-ით
+   8. მარტივი გვერდები (policy / post)
+   9. Footer
+   10. Media Queries — 2 ბრეიქპოინტი (1024px და 600px)
+   ========================================================= */
+
+
+/* ============ 1. ცვლადები და ზოგადი სტილები ============ */
+:root {
+  --purple: #e198ff;
+  --sage: #e1e6d6;
+  --black: #000000;
+  --white: #ffffff;
+  --gray: #8c8c8c;
+  --error: #c4002b;
+
+  /* Google Fonts — შემოტანილია თითოეული HTML-ის <head>-ში */
+  --font-title: "Inter Tight", sans-serif;
+  --font-text: "Inter", sans-serif;
+
+  --pad: 32px; /* სექციების გვერდითი დაშორება */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-text);
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--black);
+  /* AOS-ის fade-left/right ანიმაციები ჰორიზონტალურ სქროლს რომ არ იწვევდეს */
+  overflow-x: hidden;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+
+/* ============ 2. სათაურები და ღილაკები ============ */
+h1,
+h2,
+h3 {
+  font-family: var(--font-title);
+  font-weight: 200;
+  line-height: 0.9;
+  text-transform: uppercase;
+}
+
+/* clamp(მინიმუმი, სასურველი, მაქსიმუმი) — შრიფტი ეკრანთან ერთად იზრდება */
+.title-xl {
+  font-size: clamp(44px, 9vw, 150px);
+  letter-spacing: -0.03em;
+}
+
+.title-l {
+  font-size: clamp(38px, 7vw, 112px);
+  letter-spacing: -0.03em;
+}
+
+.title-s {
+  font-size: 22px;
+  font-weight: 300;
+  line-height: 1.2;
+}
+
+/* მომრგვალებული ღილაკი წერტილით */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  min-width: 220px;
+  padding: 14px 18px 14px 28px;
+  border: 1px solid currentColor;
+  border-radius: 40px;
+  background: transparent;
+  font-family: var(--font-text);
+  font-size: 16px;
+  font-weight: 400;
+  color: inherit;
+  cursor: pointer;
+}
+
+.btn__dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: var(--purple);
+  transition: transform 0.2s ease;
+}
+
+.btn:hover {
+  text-decoration: underline;
+}
+
+.btn:hover .btn__dot {
+  transform: scale(1.3);
+}
+
+.btn--black-dot .btn__dot {
+  background-color: var(--black);
+}
+
+
+/* ============ 3. Header ============ */
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 20px var(--pad);
+  color: var(--white);
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+}
+
+.logo img {
+  width: 170px;
+}
+
+.nav__list {
+  display: flex;
+  gap: 64px;
+}
+
+.nav__list a:hover,
+.nav__list a.active {
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
+
+.socials {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.socials svg {
+  display: block;
+  width: 24px;
+  height: 24px;
+  transition: opacity 0.2s;
+}
+
+.socials a:hover svg {
+  opacity: 0.6;
+}
+
+/* checkbox დამალულია — მას label (ბურგერი) რთავს და თიშავს */
+.menu-toggle {
+  display: none;
+}
+
+.burger {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.burger span {
+  display: block;
+  width: 28px;
+  height: 2px;
+  background-color: var(--white);
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+
+/* ============ 4. მთავარი გვერდი (index) ============ */
+
+/* --- Hero --- */
+.hero {
+  min-height: 100vh;
+  padding: 150px var(--pad) 80px;
+  color: var(--white);
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url(imgs/21.avif) center / cover no-repeat,
+    #2c3b2a;
+}
+
+.hero__box {
+  width: 380px;
+  margin-left: auto;
+  padding: 40px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  text-align: center;
+  font-size: 18px;
+  color: var(--black);
+  background-color: var(--purple);
+  animation: slide-in 1s ease-out both;
+}
+
+.hero__title {
+  margin: 90px 0 70px;
+  text-align: center;
+}
+
+.hero__texts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  font-size: 18px;
+}
+
+.hero__texts p {
+  max-width: 400px;
+}
+
+.hero__texts p:last-child {
+  margin-top: 140px;
+}
+
+/* --- Our Mission --- */
+.mission {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  padding: 120px var(--pad);
+  background-color: var(--sage);
+}
+
+.mission__img img {
+  width: 100%;
+  max-width: 480px;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+}
+
+.mission__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 48px;
+}
+
+.mission__content p {
+  max-width: 480px;
+  font-size: 18px;
+}
+
+/* --- Services --- */
+.services {
+  padding: 100px var(--pad);
+  background-color: var(--purple);
+}
+
+.services__title {
+  max-width: 1000px;
+  margin-bottom: 100px;
+}
+
+.service {
+  display: grid;
+  grid-template-columns: 120px 1fr 1fr 180px;
+  grid-template-areas: "num info img price";
+  gap: 32px;
+  padding: 32px 0;
+  border-top: 1px solid var(--black);
+}
+
+.service:last-child {
+  border-bottom: 1px solid var(--black);
+}
+
+.service__num {
+  grid-area: num;
+  font-family: var(--font-title);
+  font-size: 28px;
+}
+
+.service__info {
+  grid-area: info;
+}
+
+.service__info h3 {
+  margin-bottom: 24px;
+  font-size: clamp(22px, 2.4vw, 34px);
+  line-height: 1.1;
+}
+
+.service__info p {
+  max-width: 360px;
+}
+
+.service__img {
+  grid-area: img;
+  width: 100%;
+  max-width: 320px;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  justify-self: end;
+}
+
+.service__price {
+  grid-area: price;
+  text-align: right;
+  font-family: var(--font-title);
+  font-size: clamp(24px, 2.5vw, 36px);
+  font-weight: 200;
+  line-height: 1.1;
+}
+
+/* --- Community / Approach (გალერეა) --- */
+.community {
+  padding: 100px var(--pad);
+}
+
+.community--dark {
+  color: var(--white);
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)),
+    url(https://static.wixstatic.com/media/c837a6_3a0fc2d8ce94454eb6b62fecc5eb5d1d~mv2.jpg/v1/fill/w_1920,h_1200,fp_0.50_0.50,q_85,enc_auto/approach.jpg) center / cover no-repeat,
+    #3d4a36;
+}
+
+.community__title {
+  max-width: 260px;
+  margin-bottom: 80px;
+}
+
+.gallery {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 80px;
+}
+
+.gallery img {
+  object-fit: cover;
+}
+
+.gallery .wide {
+  width: 15%;
+  aspect-ratio: 4 / 3;
+}
+
+.gallery .tall {
+  width: 12%;
+  aspect-ratio: 3 / 4;
+}
+
+.community__text {
+  max-width: 520px;
+  font-size: 18px;
+}
+
+/* --- Latest insights --- */
+.insights {
+  padding: 80px var(--pad);
+  color: var(--white);
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)),
+    url(https://static.wixstatic.com/media/c837a6_e49e319983e040c78a25ff3abb04fed5~mv2.jpg/v1/fill/w_1910,h_1200,fp_0.50_0.50,q_90,enc_auto/1.jpg) center / cover no-repeat,
+    #1f2d1e;
+}
+
+.insights__title {
+  margin-bottom: 48px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.card {
+  display: block;
+  color: var(--black);
+  background-color: var(--purple);
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+}
+
+.card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.card__title {
+  padding: 16px 20px 32px;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.card:hover .card__title {
+  text-decoration: underline;
+}
+
+.insights__more {
+  margin-top: 60px;
+  text-align: center;
+}
+
+/* --- Get involved today --- */
+.join {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: var(--sage);
+}
+
+.join__img {
+  width: 100%;
+  height: 100%;
+  min-height: 600px;
+  object-fit: cover;
+}
+
+.join__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 48px;
+  padding: 100px var(--pad);
+}
+
+.join__content p {
+  max-width: 460px;
+  font-size: 18px;
+}
+
+
+/* ============ 5. About გვერდი ============ */
+.page-hero {
+  min-height: 70vh;
+  display: flex;
+  align-items: flex-end;
+  padding: 150px var(--pad) 48px;
+  color: var(--white);
+  background-color: #333;
+}
+
+.page-hero--about {
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url(https://static.wixstatic.com/media/c837a6_e0e7d7b4d14543e786f18444080615aa~mv2.jpg/v1/fill/w_1920,h_640,al_c,q_85,enc_auto/14.jpg) center / cover no-repeat,
+    #3a3a3a;
+}
+
+.page-hero--blog {
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)),
+    url(https://static.wixstatic.com/media/c837a6_55850ef5bab647eba3f832351fbbca2c~mv2.jpg/v1/fill/w_1920,h_640,fp_0.50_0.50,q_85,enc_auto/11.jpg) center / cover no-repeat,
+    #2f3b2c;
+}
+
+.page-hero--plain {
+  min-height: 50vh;
+  background-color: var(--black);
+}
+
+.page-hero__inner {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: end;
+  gap: 40px;
+}
+
+.page-hero__inner p {
+  max-width: 520px;
+  font-size: 18px;
+}
+
+/* --- Our story --- */
+.story {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 48px;
+  padding: 100px var(--pad);
+  background-color: var(--purple);
+}
+
+.story img {
+  width: 60%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+}
+
+.story__text {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.story__text p {
+  max-width: 520px;
+  font-size: 18px;
+}
+
+/* --- Team --- */
+.team {
+  padding: 100px var(--pad);
+  background-color: var(--sage);
+}
+
+.team__title {
+  margin-bottom: 80px;
+}
+
+.member {
+  display: grid;
+  grid-template-columns: 60px 220px 1fr 1fr;
+  grid-template-areas: "dot img info bio";
+  gap: 32px;
+  padding: 32px 0;
+  border-top: 1px solid var(--black);
+}
+
+.member:last-child {
+  border-bottom: 1px solid var(--black);
+}
+
+.member__dot {
+  grid-area: dot;
+  width: 18px;
+  height: 18px;
+  margin-top: 6px;
+  border-radius: 50%;
+  background-color: var(--purple);
+}
+
+.member img {
+  grid-area: img;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+}
+
+.member__info {
+  grid-area: info;
+}
+
+.member__info h3 {
+  margin-bottom: 16px;
+  font-size: 28px;
+  line-height: 1.1;
+}
+
+.member__bio {
+  grid-area: bio;
+  max-width: 380px;
+}
+
+
+/* ============ 6. Blog გვერდი ============ */
+.articles {
+  padding: 100px var(--pad);
+  background-color: var(--sage);
+}
+
+.articles__head {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 48px;
+}
+
+.articles__head p {
+  max-width: 520px;
+  font-size: 18px;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-bottom: 32px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--black);
+  font-size: 15px;
+}
+
+.filters a:hover,
+.filters a.active {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+
+/* ============ 7. ფორმა (Subscribe) ============ */
+.subscribe {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+  padding: 100px var(--pad);
+  color: var(--white);
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    url(https://static.wixstatic.com/media/c837a6_4e6397dc50094be7aab9377852553482~mv2.jpg/v1/fill/w_1920,h_1265,fp_0.50_0.50,q_90,usm_0.66_1.00_0.01,enc_auto/unsplash_a26Jf27DG58.jpg) center / cover no-repeat,
+    #2b3a2a;
+}
+
+/* Get Involved გვერდზე ეს სექცია ჰეროა — header-ის ქვეშ ადგილი სჭირდება */
+.subscribe--page {
+  min-height: 100vh;
+  padding-top: 150px;
+}
+
+.subscribe__title {
+  text-align: center;
+}
+
+.form-box {
+  width: 640px;
+  max-width: 100%;
+  padding: 48px 40px;
+  color: var(--black);
+  background-color: var(--purple);
+}
+
+.form-box__dot {
+  width: 18px;
+  height: 18px;
+  margin-bottom: 24px;
+  border-radius: 50%;
+  background-color: var(--black);
+}
+
+.form-box__text {
+  margin-bottom: 32px;
+  font-size: 18px;
+}
+
+.form__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 24px;
+}
+
+.field label {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.field input {
+  padding: 8px 0;
+  border: none;
+  border-bottom: 1px solid var(--black);
+  outline: none;
+  background: transparent;
+  font-family: var(--font-text);
+  font-size: 16px;
+}
+
+.field input:focus {
+  border-bottom-width: 2px;
+}
+
+/* :user-invalid — წითლდება მხოლოდ მას შემდეგ, რაც მომხმარებელი
+   ველს შეეხება ან გაგზავნას სცდის (გვერდის ჩატვირთვისთანავე არა) */
+.field input:user-invalid {
+  border-bottom-color: var(--error);
+}
+
+.field__error {
+  display: none;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--error);
+}
+
+.field input:user-invalid ~ .field__error {
+  display: block;
+}
+
+.checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 32px;
+  font-size: 15px;
+}
+
+.checkbox input {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  margin-top: 3px;
+  accent-color: var(--black);
+  cursor: pointer;
+}
+
+.checkbox input:user-invalid + label {
+  color: var(--error);
+}
+
+
+/* ============ 8. მარტივი გვერდები (policy / post) ============ */
+.plain {
+  padding: 100px var(--pad);
+  background-color: var(--sage);
+}
+
+.plain p {
+  max-width: 720px;
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+.plain .btn {
+  margin-top: 24px;
+}
+
+
+/* ============ 9. Footer ============ */
+.footer {
+  min-height: 600px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  padding: 40px var(--pad) 24px;
+  color: var(--gray);
+  background-color: var(--black);
+}
+
+.footer__col {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.footer__logo img {
+  width: 150px;
+}
+
+.footer__links a {
+  display: block;
+  text-decoration: underline;
+}
+
+.footer__links a:hover,
+.footer__nav a:hover,
+.footer__contact a:hover {
+  color: var(--white);
+}
+
+.footer__img {
+  align-self: end;
+  opacity: 0.85;
+}
+
+.footer__nav a {
+  display: block;
+}
+
+.footer__contact {
+  font-style: normal; /* <address> ნაგულისხმევად დახრილია */
+  font-family: var(--font-title);
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.footer__contact p {
+  margin-bottom: 16px;
+}
+
+.footer .socials {
+  justify-content: flex-end;
+  color: var(--white);
+}
+
+.copyright {
+  font-size: 14px;
+  text-align: right;
+  color: var(--white);
+}
+
+.copyright a {
+  text-decoration: underline;
+}
+
+
+/* ============ ანიმაცია (Hero-ს იისფერი ბლოკი) ============ */
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+
+/* =========================================================
+   10. MEDIA QUERIES
+   ========================================================= */
+
+/* ---------- ბრეიქპოინტი 1: ტაბლეტი (1024px და ნაკლები) ---------- */
+@media (max-width: 1024px) {
+  :root {
+    --pad: 24px;
+  }
+
+  .nav__list {
+    gap: 32px;
+  }
+
+  .logo img {
+    width: 140px;
+  }
+
+  .hero__texts {
+    font-size: 16px;
+  }
+
+  .hero__texts p:last-child {
+    margin-top: 80px;
+  }
+
+  .mission,
+  .story {
+    padding: 80px var(--pad);
+  }
+
+  .story img {
+    width: 85%;
+  }
+
+  /* სერვისები: ფასი გადადის ტექსტის ქვემოთ */
+  .service {
+    grid-template-columns: 60px 1fr 220px;
+    grid-template-areas:
+      "num info img"
+      "num price img";
+    gap: 16px 24px;
+  }
+
+  .service__price {
+    text-align: left;
+  }
+
+  /* გალერეა: flex-ის ნაცვლად 3 სვეტიანი grid */
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .gallery .wide,
+  .gallery .tall {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+  }
+
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .join__img {
+    min-height: 450px;
+  }
+
+  .join__content {
+    padding: 60px var(--pad);
+  }
+
+  .member {
+    grid-template-columns: 30px 180px 1fr;
+    grid-template-areas:
+      "dot img info"
+      "dot img bio";
+    gap: 16px 24px;
+  }
+
+  .articles__head {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .footer {
+    grid-template-columns: repeat(2, 1fr);
+    min-height: auto;
+  }
+}
+
+/* ---------- ბრეიქპოინტი 2: მობილური (600px და ნაკლები, 350px-მდე) ---------- */
+@media (max-width: 600px) {
+  :root {
+    --pad: 16px;
+  }
+
+  body {
+    font-size: 15px;
+  }
+
+  .btn {
+    min-width: 200px;
+    gap: 24px;
+  }
+
+  /* --- ბურგერ მენიუ --- */
+  .header {
+    flex-wrap: wrap;
+    padding: 16px var(--pad);
+  }
+
+  .logo img {
+    width: 120px;
+  }
+
+  .header .socials {
+    order: 1;
+    margin-left: auto;
+    gap: 14px;
+  }
+
+  .header .socials svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .burger {
+    display: flex;
+    order: 2;
+  }
+
+  .nav {
+    display: none;
+    order: 3;
+    width: 100%;
+    padding: 16px;
+    background-color: rgba(0, 0, 0, 0.95);
+  }
+
+  .nav__list {
+    flex-direction: column;
+    gap: 16px;
+    font-size: 18px;
+  }
+
+  /* როცა checkbox მონიშნულია — მენიუ ჩანს */
+  .menu-toggle:checked ~ .nav {
+    display: block;
+  }
+
+  /* ბურგერი გადაიქცევა X-ად */
+  .menu-toggle:checked + .burger span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .menu-toggle:checked + .burger span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-toggle:checked + .burger span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  /* --- Hero --- */
+  .hero {
+    padding: 110px var(--pad) 60px;
+  }
+
+  .hero__box {
+    width: 100%;
+    padding: 32px 20px;
+    font-size: 16px;
+  }
+
+  .hero__title {
+    margin: 60px 0 40px;
+  }
+
+  .hero__texts {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .hero__texts p:last-child {
+    margin-top: 0;
+  }
+
+  /* --- ორსვეტიანი სექციები ხდება ერთსვეტიანი --- */
+  .mission,
+  .story,
+  .join,
+  .page-hero__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .mission,
+  .story,
+  .services,
+  .community,
+  .team,
+  .articles,
+  .subscribe,
+  .plain {
+    padding: 60px var(--pad);
+  }
+
+  .subscribe--page {
+    padding-top: 110px;
+  }
+
+  .story img {
+    width: 100%;
+  }
+
+  .services__title,
+  .team__title,
+  .community__title {
+    margin-bottom: 48px;
+  }
+
+  .service {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "num"
+      "info"
+      "img"
+      "price";
+  }
+
+  .service__img {
+    max-width: 100%;
+    justify-self: start;
+  }
+
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 48px;
+  }
+
+  .community__text,
+  .mission__content p,
+  .join__content p,
+  .story__text p,
+  .page-hero__inner p,
+  .articles__head p,
+  .plain p,
+  .form-box__text {
+    font-size: 16px;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .join__img {
+    min-height: 300px;
+  }
+
+  .member {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "dot"
+      "img"
+      "info"
+      "bio";
+  }
+
+  .member img {
+    max-width: 260px;
+  }
+
+  .page-hero {
+    min-height: 60vh;
+    padding-top: 110px;
+  }
+
+  .form-box {
+    padding: 32px 20px;
+  }
+
+  .form__row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .footer {
+    grid-template-columns: 1fr;
+  }
+
+  .footer .socials {
+    justify-content: flex-start;
+  }
+
+  .copyright {
+    text-align: left;
+  }
+}
